@@ -1,0 +1,49 @@
+{
+    "hash": "4fdc176bbe313cfd8477a81c1401e6fb",
+    "packages": [
+        {
+            "package": "domnikl/statsd",
+            "version": "dev-develop",
+            "source-reference": "d1cb2f7eb72ba8aa789a57421f78f575f5caa955",
+            "commit-date": "1344438358"
+        },
+        {
+            "package": "monolog/monolog",
+            "version": "dev-master",
+            "source-reference": "09b3a80cfaf3e323e348a5e817afeee98d5e6b48",
+            "commit-date": "1347983448"
+        },
+        {
+            "package": "symfony/config",
+            "version": "dev-master",
+            "source-reference": "5a1e34ba8825d435752f20775ba879c24431b424",
+            "commit-date": "1348209299"
+        },
+        {
+            "package": "symfony/dependency-injection",
+            "version": "dev-master",
+            "source-reference": "8894a17b9d199ef2962d82f74d51f8e20a145e4c",
+            "commit-date": "1347989125"
+        },
+        {
+            "package": "symfony/yaml",
+            "version": "dev-master",
+            "alias-pretty-version": "2.2.x-dev",
+            "alias-version": "2.2.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/yaml",
+            "version": "dev-master",
+            "source-reference": "f1f0e0fea2bc568492ba1e25c2f88888d38459ca",
+            "commit-date": "1347987929"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}

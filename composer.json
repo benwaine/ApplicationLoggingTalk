@@ -1,0 +1,11 @@
+{
+    "minimum-stability":"dev",
+    "require": {
+        "monolog/monolog": "*",
+        "domnikl/statsd": "*",
+        "symfony/dependency-injection": "*",
+        "symfony/config": "*",
+        "symfony/yaml": "*"
+        
+    }
+}
