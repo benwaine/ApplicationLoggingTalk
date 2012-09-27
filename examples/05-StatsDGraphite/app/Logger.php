@@ -2,7 +2,7 @@
 
 use Monolog\Logger as MLogger;
 use Monolog\Handler\StreamHandler;
-
+use Domnikl\Statsd\Client;
 class Logger {
     /**
      * Detailed debug information
@@ -54,7 +54,27 @@ class Logger {
      * Urgent alert.
      */
     const EMERGENCY = 600;
-
+    
+    /**
+     * User Created Event 
+     */
+    const EVENT_USERCREATED = 1;
+    
+    /**
+     * User Warning Event 
+     */
+    const EVENT_USERWARNING = 2;
+    
+    /**
+     * Array containign event strings for use with statsd.
+     *  
+     * @var array 
+     */
+    private $events = array(
+        Logger::EVENT_USERCREATED => "user.created",
+        Logger::EVENT_USERWARNING => "security.user.warning",
+    );
+    
     /**
      * @var MLogger           
      */
@@ -64,6 +84,12 @@ class Logger {
      * @var MLogger 
      */
     protected $security;
+    
+    /**
+     * 
+     * @var type 
+     */
+    protected $statsd;
     
     /**
      * @var array
@@ -80,10 +106,11 @@ class Logger {
      * 
      * @param Logger $logger 
      */
-    public function __construct(MLogger $application, MLogger $security, array $requestParams) {
+    public function __construct(MLogger $application, MLogger $security, Client $client, array $requestParams) {
         
         $this->application = $application;
         $this->security = $security;
+        $this->statsd = $client;
         $this->requestParams = $requestParams;
         
         $this->requestId = md5(microtime() . $this->requestParams['REMOTE_ADDR']);
@@ -127,6 +154,25 @@ class Logger {
         
         $this->security->addRecord($level, $message, $context);
     }
+    
+    /**
+     * Logs an event using statsd.
+     * 
+     * @param int $event 
+     * 
+     * @return void
+     */
+    public function logBusinessEvent($event) {
+        
+        if(!isset($this->events[$event]))
+        {
+            throw new \Exception('Invalid Logging Event');
+        }
+        
+        $this->statsd->increment($this->events[$event]);
+        
+    }
+            
     
 }
 

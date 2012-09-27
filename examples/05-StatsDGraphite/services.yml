@@ -1,0 +1,51 @@
+parameters:
+    logger.class:      Logger
+    logger.security.path: /tmp/security.log
+    logger.security.name: security
+    logger.security.level: 200
+    logger.application.path: /tmp/application.log 
+    logger.application.name: application
+    logger.application.level: 200
+    logger.monolog.class: Monolog\Logger
+    logger.monolog.handlerClass: Monolog\Handler\StreamHandler
+    user.mapper.class: UserMapper
+    statsd.connection.class: Domnikl\Statsd\Connection\Socket
+    statsd.connection.host: localhost
+    statsd.connection.port: 8125
+    statsd.client.class: Domnikl\Statsd\Client
+    statsd.client.namespace: test 
+    request.params:
+      REMOTE_ADDR: 
+        - 127.0.0.1
+
+services:
+    logger:
+        class: %logger.class%
+        arguments: [@applog, @seclog, @statsdClient, %request.params%]
+    seclog: 
+        class: %logger.monolog.class%
+        arguments: [%logger.security.name%]
+        calls:
+           - [ pushHandler, [ @seclogHandler ] ]
+    applog:
+        class: %logger.monolog.class%
+        arguments: [%logger.application.name%]
+        calls:
+           - [ pushHandler, [ @applogHandler ] ]
+    seclogHandler: 
+        class: %logger.monolog.handlerClass%
+        arguments: [%logger.security.path%, %logger.security.level%]
+    applogHandler: 
+        class: %logger.monolog.handlerClass%
+        arguments: [%logger.application.path%, %logger.application.level%]
+    statsdClient:
+        class: %statsd.client.class%
+        arguments: [@statsdConnection, %statsd.client.namespace%]
+    statsdConnection: 
+        class: %statsd.connection.class%
+        arguments: [%statsd.connection.host%, %statsd.connection.port%]
+    UserMapper: 
+        class: %user.mapper.class%
+        arguments: [@logger]
+        
+        

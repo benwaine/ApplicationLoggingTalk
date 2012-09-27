@@ -18,15 +18,8 @@ use Symfony\Component\Config\FileLocator;
 $container = new ContainerBuilder;
 $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
 $loader->load("services.yml");
-
+$logger = $container->get('Logger');
 $mapper = $container->get('UserMapper');
-
-// Creating StatsD Client 
-$connection = new \Domnikl\Statsd\Connection\Socket('localhost', 8125);
-$statsd = new \Domnikl\Statsd\Client($connection, "test.namespace");
-
-// simple counts
-$statsd->increment("request");
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -40,29 +33,30 @@ $statsd->increment("request");
 // Run infinate loop to generate data for statsd
 
 while(true) {
+
     
-    $statsd->increment("user.creation.startevent");
+    $number = rand(1, 10);
     
-    for($x = 0; $x <= 4; $x++)
+    for($x = 0; $x <= $number; $x++)
     {
 
         $user = new User(rand(1, 10000), 'Betty Boo');
         
         $mapper->save($user); 
-
-        $statsd->increment("user.created");
-
+        
+        $logger->logBusinessEvent(Logger::EVENT_USERCREATED);
+        
         unset($user);
 
         if($x%2 === 0) {
 
             // Simulate some kind of security warning when creating some 
             // of the users.
-            $statsd->increment("security.userwarning");
+            
+            $logger->logBusinessEvent(Logger::EVENT_USERWARNING);
         }
     }
     
      sleep(rand(1, 15));
     
-    $statsd->increment("user.creation.endevent");
 }
