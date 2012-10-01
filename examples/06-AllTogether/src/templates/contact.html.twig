@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block container_content %}
+<h1> Example Logging Website</h1>
+    <p>Navigate round the site and complete the various actions to trigger business 
+    / domain events in the logs.
+    </p>
+    
+    <h2>Contact Us</h2>
+    <p>You're opinions matter to us (honest). Get in touch!</p>
+
+    <form method="post" action="/contact-handler">
+        <div><label for="name">Name: </label><input type="text" name="name" /></div>
+        <div><label for="comment">Comment: </label><textarea name="comment"></textarea></div>
+        <div><input type="submit" name="submit" value="Submit" /></div>
+    </form>
+        
+{% endblock %}

@@ -1,6 +1,16 @@
 {
-    "hash": "4fdc176bbe313cfd8477a81c1401e6fb",
+    "hash": "6b46c346c63e685a7bfda57e2dde351b",
     "packages": [
+        {
+            "package": "doctrine/common",
+            "version": "2.2.3"
+        },
+        {
+            "package": "doctrine/dbal",
+            "version": "2.2.x-dev",
+            "source-reference": "da4b7b4d965db0c1c1d23333e87ee5ae8994e249",
+            "commit-date": "1344978731"
+        },
         {
             "package": "domnikl/statsd",
             "version": "dev-develop",
@@ -12,6 +22,30 @@
             "version": "dev-master",
             "source-reference": "09b3a80cfaf3e323e348a5e817afeee98d5e6b48",
             "commit-date": "1347983448"
+        },
+        {
+            "package": "pimple/pimple",
+            "version": "dev-master",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "pimple/pimple",
+            "version": "dev-master",
+            "source-reference": "b9f27b8dc18c08f00627dec02359b46a24791dc3",
+            "commit-date": "1347278988"
+        },
+        {
+            "package": "silex/silex",
+            "version": "dev-master",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "silex/silex",
+            "version": "dev-master",
+            "source-reference": "0d02614d88bf6ec0410e7c9c0df556d8c3ef47ca",
+            "commit-date": "1348695490"
         },
         {
             "package": "symfony/config",
@@ -26,16 +60,38 @@
             "commit-date": "1347989125"
         },
         {
-            "package": "symfony/yaml",
-            "version": "dev-master",
-            "alias-pretty-version": "2.2.x-dev",
-            "alias-version": "2.2.9999999.9999999-dev"
+            "package": "symfony/event-dispatcher",
+            "version": "2.1.x-dev",
+            "source-reference": "v2.1.2",
+            "commit-date": "1347274422"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "2.1.x-dev",
+            "source-reference": "8180a46bb25c3ab539b5ab7c83617d1cef901279",
+            "commit-date": "1348576376"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "2.1.x-dev",
+            "source-reference": "10f8418126cba9f7e510eb57e53810d41f9f2add",
+            "commit-date": "1348209286"
+        },
+        {
+            "package": "symfony/routing",
+            "version": "2.1.x-dev",
+            "source-reference": "v2.1.2",
+            "commit-date": "1347274422"
         },
         {
             "package": "symfony/yaml",
             "version": "dev-master",
             "source-reference": "f1f0e0fea2bc568492ba1e25c2f88888d38459ca",
             "commit-date": "1347987929"
+        },
+        {
+            "package": "twig/twig",
+            "version": "1.6.0"
         }
     ],
     "packages-dev": null,

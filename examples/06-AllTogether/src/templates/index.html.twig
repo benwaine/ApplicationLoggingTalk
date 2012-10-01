@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block container_content %}
+<h1> Example Logging Website</h1>
+    <p>Navigate round the site and complete the various actions to trigger business 
+    / domain events in the logs.
+    </p>
+    
+    <h2>Registration</h2>
+
+    <form method="post" action="/register">
+        <div><label for="name">Name: </label><input type="text" name="name" /></div>
+        <div><label for="meme">Favorite Meme: </label><input type="text" name="meme" /></div>
+        <div><input type="Submit" name="submit" value="Register" /></div>
+    </form>
+        
+{% endblock %}
