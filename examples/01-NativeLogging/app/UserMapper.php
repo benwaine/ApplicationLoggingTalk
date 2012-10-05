@@ -1,7 +1,5 @@
 <?php
 
-use Monolog\Logger;
-
 class UserMapper {
     
     public function save(User $user)

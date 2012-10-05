@@ -37,7 +37,7 @@ class __TwigTemplate_386df619b4d53f8cdfb978c340524f22 extends Twig_Template
        bank account!</p>
 
     <form method=\"post\" action=\"/donate-handler\">
-        <div><label for=\"cash\">Amount: </label><input type=\"text\" name=\"name\" /></div>
+        <div><label for=\"cash\">Amount: </label><input type=\"text\" name=\"cash\" /></div>
         <div><input type=\"submit\" name=\"submit\" value=\"Donate\" /></div>
     </form>
         

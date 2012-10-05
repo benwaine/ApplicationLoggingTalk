@@ -63,7 +63,7 @@ class Logger {
     /**
      * @var MLogger 
      */
-    protected $secuirty;
+    protected $security;
     
     /**
      * @var array
@@ -83,7 +83,7 @@ class Logger {
     public function __construct(MLogger $application, MLogger $security, array $requestParams) {
         
         $this->application = $application;
-        $this->secuirty = $security;
+        $this->security = $security;
         $this->requestParams = $requestParams;
         
         $this->requestId = md5(microtime() . $this->requestParams['REMOTE_ADDR']);
@@ -125,7 +125,7 @@ class Logger {
             'IP' => $this->requestParams['REMOTE_ADDR']
             );
         
-        $this->securityLog($message, $level, $context);
+        $this->security->addRecord($level, $message, $context);
     }
     
 }

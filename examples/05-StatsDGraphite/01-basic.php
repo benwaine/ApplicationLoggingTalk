@@ -23,7 +23,7 @@ $mapper = $container->get('UserMapper');
 
 // Creating StatsD Client 
 $connection = new \Domnikl\Statsd\Connection\Socket('localhost', 8125);
-$statsd = new \Domnikl\Statsd\Client($connection, "test.namespace");
+$statsd = new \Domnikl\Statsd\Client($connection, "beta");
 
 // simple counts
 $statsd->increment("request");
@@ -40,10 +40,10 @@ $statsd->increment("request");
 // Run infinate loop to generate data for statsd
 
 while(true) {
-    
+    $number = rand(1, 10);
     $statsd->increment("user.creation.startevent");
     
-    for($x = 0; $x <= 4; $x++)
+    for($x = 0; $x <= $number; $x++)
     {
 
         $user = new User(rand(1, 10000), 'Betty Boo');
